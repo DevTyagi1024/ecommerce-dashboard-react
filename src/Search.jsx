@@ -20,6 +20,7 @@ const Search = function () {
             const data = await res.json();
 
             if (data.status) {
+
                 setProducts(data.products);
             } else {
                 setProducts([]);
@@ -50,10 +51,12 @@ const Search = function () {
                         </div>
                     </div>
 
-                    <div className="searchresult">
+                    <div className="product_wrap">
 
                         {products.map(product => (
-                            <div className="searchresult_wrap" key={product.id}>
+
+                            <div className="searchresult_wrap product_card" key={product.id}>
+
 
                                 <div className="product_image">
                                     <img
@@ -75,6 +78,8 @@ const Search = function () {
                                     <p>{product.description}</p>
                                 </div>
                             </div>
+
+
                         ))}
 
                     </div>

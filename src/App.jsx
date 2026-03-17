@@ -10,7 +10,7 @@ import UpdateProduct from './UpdateProduct'
 import Protected from './Protected'
 import ProductList from './ProductList'
 import UserList from './UserList'
-import Search from './search'
+import Search from './Search'
 
 
 function App() {

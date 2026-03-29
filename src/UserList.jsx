@@ -1,22 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import BASE_URL from "./services/api";
+import api from "./services/api"; // ✅ FIXED
 
 const UserList = function () {
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch(`${BASE_URL}/users`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.status) {
-                    setUsers(data.users);
-                }
-            })
-            .catch(err => console.error(err));
+        getUsers();
     }, []);
+
+    const getUsers = async () => {
+        try {
+            const response = await api.get("/users"); // ✅ axios
+            const data = response.data;
+
+            console.log("USERS:", data);
+
+            if (data.status) {
+                setUsers(data.users);
+            } else {
+                setUsers([]);
+            }
+
+        } catch (error) {
+            console.error("USER LIST ERROR:", error);
+
+            if (error.response) {
+                alert(error.response.data.message || "Failed to load users");
+            } else {
+                alert("Server is down or waking up (Render delay)");
+            }
+        }
+    };
 
     return (
         <div>

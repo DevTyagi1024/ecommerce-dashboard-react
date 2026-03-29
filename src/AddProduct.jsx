@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
-import BASE_URL from "./services/api";
+import api from "./services/api"; // ✅ FIXED
 
 const AddProduct = function () {
 
-    const [name, setName] = useState();
-    const [desc, setDesc] = useState();
-    const [price, setPrice] = useState();
-    const [file, setFile] = useState();
+    const [name, setName] = useState("");
+    const [desc, setDesc] = useState("");
+    const [price, setPrice] = useState("");
+    const [file, setFile] = useState(null);
 
     const navigate = useNavigate();
 
@@ -26,23 +26,26 @@ const AddProduct = function () {
         formData.append("image", file);
 
         try {
-            const result = await fetch(`${BASE_URL}/add-product`, {
-                method: "POST",
-                headers: {
-                    "Accept": "application/json"
-                },
-                body: formData,
-            });
+            const response = await api.post("/add-product", formData); // ✅ axios
+            const data = response.data;
 
-            const data = await result.json();
-            console.log("RESPONSE:", data);
+            console.log("ADD PRODUCT RESPONSE:", data);
 
             if (data.status === true) {
+                alert("Product added successfully ✅");
                 navigate("/UpdateProduct");
+            } else {
+                alert("Failed to add product");
             }
 
         } catch (error) {
-            console.error("Error:", error);
+            console.error("ADD PRODUCT ERROR:", error);
+
+            if (error.response) {
+                alert(error.response.data.message || "Server error");
+            } else {
+                alert("Server is down or waking up (Render delay)");
+            }
         }
     }
 
@@ -53,19 +56,34 @@ const AddProduct = function () {
 
             <div className="product_form">
                 <div className="product_inputs">
-                    <input type="text" placeholder="Product Name" onChange={(e) => setName(e.target.value)} />
+                    <input
+                        type="text"
+                        placeholder="Product Name"
+                        onChange={(e) => setName(e.target.value)}
+                    />
                 </div>
 
                 <div className="product_inputs">
-                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                    <input
+                        type="file"
+                        onChange={(e) => setFile(e.target.files[0])}
+                    />
                 </div>
 
                 <div className="product_inputs">
-                    <input type="number" placeholder="Product Price" onChange={(e) => setPrice(e.target.value)} />
+                    <input
+                        type="number"
+                        placeholder="Product Price"
+                        onChange={(e) => setPrice(e.target.value)}
+                    />
                 </div>
 
                 <div className="product_inputs">
-                    <input type="text" placeholder="Product Description" onChange={(e) => setDesc(e.target.value)} />
+                    <input
+                        type="text"
+                        placeholder="Product Description"
+                        onChange={(e) => setDesc(e.target.value)}
+                    />
                 </div>
 
                 <div className="add_button">

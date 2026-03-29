@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import BASE_URL from "./services/api";
+import api from "./services/api"; // ✅ FIXED
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -12,27 +12,27 @@ const Login = () => {
         const details = { email, password };
 
         try {
-            let response = await fetch(`${BASE_URL}/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(details)
-            });
+            const response = await api.post("/login", details); // ✅ axios
+            const result = response.data;
 
-            let result = await response.json();
-            console.log(result);
+            console.log("LOGIN RESPONSE:", result);
 
             if (result.status) {
                 localStorage.setItem("user", JSON.stringify(result.user));
                 navigate("/AddProduct");
             } else {
-                alert(result.message);
+                alert(result.message || "Login failed");
             }
 
         } catch (error) {
-            console.error("Login Error:", error);
+            console.error("LOGIN ERROR:", error);
+
+            // ✅ better error handling
+            if (error.response) {
+                alert(error.response.data.message || "Server error");
+            } else {
+                alert("Server is down or waking up (Render delay)");
+            }
         }
     }
 

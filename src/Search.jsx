@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import BASE_URL from "./services/api";
+import api from "./services/api"; // ✅ FIXED
 
 const Search = function () {
 
@@ -14,11 +14,10 @@ const Search = function () {
         }
 
         try {
-            const res = await fetch(
-                `${BASE_URL}/products/search?query=${query}`
-            );
+            const response = await api.get(`/products/search?query=${query}`); // ✅ axios
+            const data = response.data;
 
-            const data = await res.json();
+            console.log("SEARCH RESPONSE:", data);
 
             if (data.status) {
                 setProducts(data.products);
@@ -27,7 +26,13 @@ const Search = function () {
             }
 
         } catch (error) {
-            console.error("Search error:", error);
+            console.error("SEARCH ERROR:", error);
+
+            if (error.response) {
+                alert(error.response.data.message || "Search failed");
+            } else {
+                alert("Server is down or waking up (Render delay)");
+            }
         }
     };
 
@@ -58,6 +63,11 @@ const Search = function () {
                             </button>
                         </div>
                     </div>
+
+                    {/* ✅ EMPTY STATE */}
+                    {products.length === 0 && (
+                        <p style={{ textAlign: "center" }}>No results found</p>
+                    )}
 
                     <div className="product_wrap">
                         {products.map(product => (

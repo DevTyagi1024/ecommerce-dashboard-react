@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
+import api from "./services/api"; // ✅ use axios
 
 const ProductList = function () {
 
     const [products, setProducts] = useState([]);
 
-    useEffect(function () {
-        fetch("https://ecomm-backend-1-9fod.onrender.com/api/productlist")
-            .then(res => res.json())
-            .then(data => {
-                console.log(data); // debug
-                setProducts(data.products || data); // handle both formats
-            })
-            .catch(err => console.log(err));
+    useEffect(() => {
+        getProducts();
     }, []);
+
+    const getProducts = async () => {
+        try {
+            const response = await api.get("/productlist"); // ✅ clean API call
+            const data = response.data;
+
+            console.log("PRODUCTS:", data);
+
+            setProducts(data.products || []); // ✅ safe handling
+
+        } catch (error) {
+            console.error("ERROR:", error);
+        }
+    };
 
     return (
         <div>
@@ -25,6 +34,11 @@ const ProductList = function () {
                     <div className="product_head">
                         <h2>Product Listing</h2>
                     </div>
+
+                    {/* ✅ HANDLE EMPTY STATE */}
+                    {products.length === 0 && (
+                        <p style={{ textAlign: "center" }}>No products found</p>
+                    )}
 
                     <div className="product_wrap">
 

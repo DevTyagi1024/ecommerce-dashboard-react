@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import BASE_URL from "./services/api";
+import api from "./services/api";   // ✅ FIXED
 
 const Register = () => {
 
     const navigate = useNavigate();
 
-    useEffect(function () {
+    useEffect(() => {
         if (localStorage.getItem('user')) {
-            navigate('/addProduct')
+            navigate('/addProduct');
         }
-    }, []);
+    }, [navigate]);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -20,20 +20,29 @@ const Register = () => {
     async function signup() {
         let details = { name, email, password };
 
-        let response = await fetch(`${BASE_URL}/register`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(details)
-        });
+        try {
+            const response = await api.post("/register", details);  // ✅ AXIOS
 
-        let result = await response.json();
+            const result = response.data;
 
-        if (result.status) {
-            localStorage.setItem("user", JSON.stringify(result.user));
-            navigate("/AddProduct");
+            console.log("REGISTER RESPONSE:", result);
+
+            if (result.status) {
+                localStorage.setItem("user", JSON.stringify(result.user));
+                navigate("/AddProduct");
+            } else {
+                alert(result.message || "Registration failed");
+            }
+
+        } catch (error) {
+            console.error("REGISTER ERROR:", error);
+
+            // ✅ Better error handling
+            if (error.response) {
+                alert(error.response.data.message || "Server error");
+            } else {
+                alert("Server is down or waking up (Render delay)");
+            }
         }
     }
 

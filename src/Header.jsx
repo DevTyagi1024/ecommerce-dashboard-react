@@ -28,7 +28,7 @@ const Header = function () {
                 <Container fluid>
 
                     <div className="header_logo">
-                        <Link to="/" className="brand"> <img src="./public/images/Logo.avif" alt="Dev Tyagi Logo" className="logo" /></Link>
+                        <Link to="/" className="brand"> <img src="/images/Logo.avif" alt="Dev Tyagi Logo" className="logo" /></Link>
                     </div>
 
 

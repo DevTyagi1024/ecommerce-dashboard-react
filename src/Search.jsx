@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
+import BASE_URL from "./services/api";
 
 const Search = function () {
 
@@ -14,22 +15,21 @@ const Search = function () {
 
         try {
             const res = await fetch(
-                `http://127.0.0.1:8000/api/products/search?query=${query}`
+                `${BASE_URL}/products/search?query=${query}`
             );
 
             const data = await res.json();
 
             if (data.status) {
-
                 setProducts(data.products);
             } else {
                 setProducts([]);
             }
+
         } catch (error) {
             console.error("Search error:", error);
         }
     };
-
 
     return (
         <div>
@@ -41,29 +41,33 @@ const Search = function () {
                     <div className="search_head">
                         <h2>Search Page</h2>
                     </div>
+
                     <div className="search_wrap">
                         <div className="search_input">
-                            <input type="text" placeholder="Search Product" onChange={(e) => setquery(e.target.value)} value={query} />
+                            <input
+                                type="text"
+                                placeholder="Search Product"
+                                onChange={(e) => setquery(e.target.value)}
+                                value={query}
+                            />
                         </div>
 
                         <div className="search_button">
-                            <button className="search_btn" onClick={searchProduct}>Search</button>
+                            <button className="search_btn" onClick={searchProduct}>
+                                Search
+                            </button>
                         </div>
                     </div>
 
                     <div className="product_wrap">
-
                         {products.map(product => (
-
                             <div className="searchresult_wrap product_card" key={product.id}>
-
 
                                 <div className="product_image">
                                     <img
-                                        src={`http://127.0.0.1:8000/products/${product.image}`}
+                                        src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
                                         alt={product.name}
                                     />
-
                                 </div>
 
                                 <div className="product_title">
@@ -77,17 +81,16 @@ const Search = function () {
                                 <div className="product_desc">
                                     <p>{product.description}</p>
                                 </div>
+
                             </div>
-
-
                         ))}
-
                     </div>
+
                 </div>
             </section>
 
         </div>
-    )
+    );
 }
 
 export default Search;

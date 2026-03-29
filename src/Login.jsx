@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import BASE_URL from "./services/api";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ const Login = () => {
         const details = { email, password };
 
         try {
-            let response = await fetch("http://127.0.0.1:8000/api/login", {
+            let response = await fetch(`${BASE_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -24,14 +25,12 @@ const Login = () => {
             console.log(result);
 
             if (result.status) {
-                // ✅ Store user in localStorage
                 localStorage.setItem("user", JSON.stringify(result.user));
-
-                // ✅ Redirect after login
                 navigate("/AddProduct");
             } else {
                 alert(result.message);
             }
+
         } catch (error) {
             console.error("Login Error:", error);
         }

@@ -6,17 +6,18 @@ const ProductList = function () {
     const [products, setProducts] = useState([]);
 
     useEffect(function () {
-        fetch(" http://127.0.0.1:8000/api/productlist")
+        fetch("https://ecomm-backend-1-9fod.onrender.com/api/productlist")
             .then(res => res.json())
             .then(data => {
-                setProducts(data.products);
-            });
+                console.log(data); // debug
+                setProducts(data.products || data); // handle both formats
+            })
+            .catch(err => console.log(err));
     }, []);
 
     return (
         <div>
             <Header />
-
 
             <section className="product">
                 <div className="container">
@@ -24,6 +25,7 @@ const ProductList = function () {
                     <div className="product_head">
                         <h2>Product Listing</h2>
                     </div>
+
                     <div className="product_wrap">
 
                         {products.map(product => (
@@ -31,10 +33,9 @@ const ProductList = function () {
 
                                 <div className="product_image">
                                     <img
-                                        src={`http://127.0.0.1:8000/products/${product.image}`}
+                                        src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
                                         alt={product.name}
                                     />
-
                                 </div>
 
                                 <div className="product_title">
@@ -49,7 +50,6 @@ const ProductList = function () {
                                     <p>{product.description}</p>
                                 </div>
 
-
                             </div>
                         ))}
 
@@ -60,6 +60,5 @@ const ProductList = function () {
         </div>
     )
 }
-
 
 export default ProductList;

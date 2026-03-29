@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
-
+import BASE_URL from "./services/api";
 
 const AddProduct = function () {
 
@@ -10,8 +10,8 @@ const AddProduct = function () {
     const [price, setPrice] = useState();
     const [file, setFile] = useState();
 
-
     const navigate = useNavigate();
+
     async function addproduct() {
 
         if (!name || !price || !desc || !file) {
@@ -26,7 +26,7 @@ const AddProduct = function () {
         formData.append("image", file);
 
         try {
-            const result = await fetch("http://127.0.0.1:8000/api/add-product", {
+            const result = await fetch(`${BASE_URL}/add-product`, {
                 method: "POST",
                 headers: {
                     "Accept": "application/json"
@@ -34,11 +34,9 @@ const AddProduct = function () {
                 body: formData,
             });
 
-            // ✅ MUST be json
             const data = await result.json();
             console.log("RESPONSE:", data);
 
-            // ✅ Redirect works now
             if (data.status === true) {
                 navigate("/UpdateProduct");
             }
@@ -47,8 +45,6 @@ const AddProduct = function () {
             console.error("Error:", error);
         }
     }
-
-
 
     return (
         <div>
@@ -61,7 +57,7 @@ const AddProduct = function () {
                 </div>
 
                 <div className="product_inputs">
-                    <input type="file" placeholder="Choose the file" onChange={(e) => setFile(e.target.files[0])} />
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
                 </div>
 
                 <div className="product_inputs">
@@ -77,9 +73,7 @@ const AddProduct = function () {
                 </div>
             </div>
         </div>
-    )
-
+    );
 }
-
 
 export default AddProduct;

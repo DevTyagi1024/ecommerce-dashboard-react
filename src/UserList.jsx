@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import BASE_URL from "./services/api";
 
 const UserList = function () {
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/users")
+        fetch(`${BASE_URL}/users`)
             .then(res => res.json())
             .then(data => {
-                console.log(data); // 🔍 debug
+                console.log(data);
                 if (data.status) {
                     setUsers(data.users);
                 }
             })
             .catch(err => console.error(err));
     }, []);
-
 
     return (
         <div>

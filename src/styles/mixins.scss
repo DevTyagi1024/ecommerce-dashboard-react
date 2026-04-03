@@ -1,0 +1,113 @@
+@use './variables' as *;
+
+// Flexbox Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// Button Styles
+@mixin button-primary {
+    padding: $spacing-md $spacing-lg;
+    background: $gradient-primary;
+    color: $color-text-light;
+    border: none;
+    border-radius: $br-full;
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    cursor: pointer;
+    transition: all $transition;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+@mixin button-secondary {
+    padding: $spacing-md $spacing-lg;
+    background: $gradient-secondary;
+    color: $color-text-light;
+    border: 2px solid $color-secondary;
+    border-radius: $br-full;
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    cursor: pointer;
+    transition: all $transition;
+    box-shadow: 0 4px 12px rgba(160, 174, 205, 0.2);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(160, 174, 205, 0.3);
+    }
+}
+
+// Input Styles
+@mixin input-primary {
+    width: 100%;
+    padding: $spacing-md $spacing-lg;
+    border: 2px solid $color-light-border;
+    border-radius: $br-lg;
+    background: $color-white;
+    color: $color-text-dark;
+    font-size: $fs-md;
+    transition: all $transition;
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+
+    &:focus {
+        border-color: $color-secondary;
+        background: linear-gradient(to right, $color-white 0%, $color-light-bg 100%);
+        box-shadow: 0 0 16px rgba(160, 174, 205, 0.25);
+    }
+}
+
+// Card Styles
+@mixin card {
+    background: $color-white;
+    border-radius: $br-xl;
+    padding: $spacing-lg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid $color-light-border;
+    transition: all $transition;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        border-color: $color-secondary;
+    }
+}
+
+// Text Truncate
+@mixin truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Gradient Text
+@mixin gradient-text {
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

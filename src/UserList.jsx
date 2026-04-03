@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import api from "./services/api"; // ✅ FIXED
+import api from "./services/api";
 
 const UserList = function () {
 
@@ -12,7 +12,7 @@ const UserList = function () {
 
     const getUsers = async () => {
         try {
-            const response = await api.get("/users"); // ✅ axios
+            const response = await api.get("/users");
             const data = response.data;
 
             console.log("USERS:", data);
@@ -37,17 +37,19 @@ const UserList = function () {
     return (
         <div>
             <Header />
-            <h2>User List</h2>
+            <div className="user-list-container">
+                <h2>Users List</h2>
 
-            {users.length === 0 && <p>No users found</p>}
+                {users.length === 0 && <p style={{ textAlign: "center", marginTop: "40px" }}>No users found</p>}
 
-            {users.map(user => (
-                <div key={user.id}>
-                    <p><b>Name:</b> {user.name}</p>
-                    <p><b>Email:</b> {user.email}</p>
-                    <hr />
-                </div>
-            ))}
+                {users.map(user => (
+                    <div key={user.id} className="user-card">
+                        <p><b>Name:</b> {user.name}</p>
+                        <p><b>Email:</b> {user.email}</p>
+                        <hr />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

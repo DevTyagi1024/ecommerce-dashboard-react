@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import api from "./services/api"; // ✅ use axios
+import api from "./services/api";
 
 const ProductList = function () {
 
@@ -12,12 +12,12 @@ const ProductList = function () {
 
     const getProducts = async () => {
         try {
-            const response = await api.get("/productlist"); // ✅ clean API call
+            const response = await api.get("/productlist");
             const data = response.data;
 
             console.log("PRODUCTS:", data);
 
-            setProducts(data.products || []); // ✅ safe handling
+            setProducts(data.products || []);
 
         } catch (error) {
             console.error("ERROR:", error);
@@ -35,39 +35,40 @@ const ProductList = function () {
                         <h2>Product Listing</h2>
                     </div>
 
-                    {/* ✅ HANDLE EMPTY STATE */}
                     {products.length === 0 && (
-                        <p style={{ textAlign: "center" }}>No products found</p>
+                        <p style={{ textAlign: "center", fontSize: "16px", color: "#4a4a4a", marginTop: "40px" }}>No products found</p>
                     )}
 
-                    <div className="product_wrap">
+                    {products.length > 0 && (
+                        <div className="product_wrap">
 
-                        {products.map(product => (
-                            <div key={product.id} className="product_card">
+                            {products.map(product => (
+                                <div key={product.id} className="product_card">
 
-                                <div className="product_image">
-                                    <img
-                                        src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
-                                        alt={product.name}
-                                    />
+                                    <div className="product_image">
+                                        <img
+                                            src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
+                                            alt={product.name}
+                                        />
+                                    </div>
+
+                                    <div className="product_title">
+                                        <h3>{product.name}</h3>
+                                    </div>
+
+                                    <div className="product_price">
+                                        <h4>${product.price}</h4>
+                                    </div>
+
+                                    <div className="product_desc">
+                                        <p>{product.description}</p>
+                                    </div>
+
                                 </div>
+                            ))}
 
-                                <div className="product_title">
-                                    <h3>{product.name}</h3>
-                                </div>
-
-                                <div className="product_price">
-                                    <h4>{product.price}</h4>
-                                </div>
-
-                                <div className="product_desc">
-                                    <p>{product.description}</p>
-                                </div>
-
-                            </div>
-                        ))}
-
-                    </div>
+                        </div>
+                    )}
                 </div>
             </section>
 

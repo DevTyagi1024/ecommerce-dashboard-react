@@ -1,0 +1,153 @@
+/* App container for full height layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+}
+
+.main-content {
+  flex: 1;
+  background: inherit;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Apply animations */
+.auth-form {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.product_card {
+  animation: slideInFromBottom 0.3s ease-in-out;
+}
+
+.user-card {
+  animation: slideInFromBottom 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav_wrap {
+    gap: 20px !important;
+  }
+
+  .nav_wrap a {
+    font-size: 16px !important;
+  }
+
+  .product_wrap {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+    gap: 16px !important;
+  }
+
+  .auth-form {
+    padding: 24px !important;
+  }
+
+  .product_form {
+    padding: 24px !important;
+  }
+
+  .container {
+    padding: 0 16px !important;
+  }
+
+  .header .container-fluid {
+    padding: 0 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .container-fluid {
+    gap: 16px !important;
+  }
+
+  .nav_wrap {
+    gap: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .nav_wrap a {
+    font-size: 12px !important;
+  }
+
+  .product_wrap {
+    grid-template-columns: 1fr !important;
+  }
+
+  .search_wrap {
+    gap: 12px !important;
+  }
+
+  h1 {
+    font-size: 24px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #a0aecd 0%, #7a8ab3 100%);
+}
+
+/* Selection Styling */
+::selection {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #ffffff;
+}

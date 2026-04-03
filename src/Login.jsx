@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import api from "./services/api"; // ✅ FIXED
+import api from "./services/api";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const Login = () => {
         const details = { email, password };
 
         try {
-            const response = await api.post("/login", details); // ✅ axios
+            const response = await api.post("/login", details);
             const result = response.data;
 
             console.log("LOGIN RESPONSE:", result);
@@ -27,7 +27,6 @@ const Login = () => {
         } catch (error) {
             console.error("LOGIN ERROR:", error);
 
-            // ✅ better error handling
             if (error.response) {
                 alert(error.response.data.message || "Server error");
             } else {
@@ -39,27 +38,31 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <h1>Login Page</h1>
+            <div className="auth-container">
+                <div className="auth-form">
+                    <h1>Login</h1>
 
-            <input
-                type="email"
-                placeholder="Enter Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
+                    <input
+                        type="email"
+                        placeholder="Enter Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-            <br /><br />
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-            <input
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                    <button onClick={login}>Login</button>
 
-            <br /><br />
-
-            <button onClick={login}>Login</button>
+                    <div className="auth-link">
+                        Don't have an account? <a href="/Register">Register here</a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

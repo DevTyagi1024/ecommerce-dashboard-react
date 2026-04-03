@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import api from "./services/api";   // ✅ FIXED
+import api from "./services/api";
 
 const Register = () => {
 
@@ -21,7 +21,7 @@ const Register = () => {
         let details = { name, email, password };
 
         try {
-            const response = await api.post("/register", details);  // ✅ AXIOS
+            const response = await api.post("/register", details);
 
             const result = response.data;
 
@@ -37,7 +37,6 @@ const Register = () => {
         } catch (error) {
             console.error("REGISTER ERROR:", error);
 
-            // ✅ Better error handling
             if (error.response) {
                 alert(error.response.data.message || "Server error");
             } else {
@@ -49,30 +48,38 @@ const Register = () => {
     return (
         <div>
             <Header />
-            <h1>Registration Page</h1>
+            <div className="auth-container">
+                <div className="auth-form">
+                    <h1>Register</h1>
 
-            <input
-                type="text"
-                value={name}
-                placeholder="Enter the name"
-                onChange={(e) => setName(e.target.value)}
-            />
+                    <input
+                        type="text"
+                        value={name}
+                        placeholder="Enter your name"
+                        onChange={(e) => setName(e.target.value)}
+                    />
 
-            <input
-                type="email"
-                value={email}
-                placeholder="Enter the email"
-                onChange={(e) => setEmail(e.target.value)}
-            />
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder="Enter your email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
-            <input
-                type="password"
-                value={password}
-                placeholder="Enter the password"
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                    <input
+                        type="password"
+                        value={password}
+                        placeholder="Enter your password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-            <button onClick={signup}>Submit</button>
+                    <button onClick={signup}>Register</button>
+
+                    <div className="auth-link">
+                        Already have an account? <a href="/Login">Login here</a>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

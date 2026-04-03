@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import api from "./services/api"; // ✅ FIXED
+import api from "./services/api";
 
 const Search = function () {
 
@@ -14,7 +14,7 @@ const Search = function () {
         }
 
         try {
-            const response = await api.get(`/products/search?query=${query}`); // ✅ axios
+            const response = await api.get(`/products/search?query=${query}`);
             const data = response.data;
 
             console.log("SEARCH RESPONSE:", data);
@@ -44,14 +44,14 @@ const Search = function () {
                 <div className="container">
 
                     <div className="search_head">
-                        <h2>Search Page</h2>
+                        <h2>Search Products</h2>
                     </div>
 
                     <div className="search_wrap">
                         <div className="search_input">
                             <input
                                 type="text"
-                                placeholder="Search Product"
+                                placeholder="Search products by name..."
                                 onChange={(e) => setquery(e.target.value)}
                                 value={query}
                             />
@@ -64,43 +64,43 @@ const Search = function () {
                         </div>
                     </div>
 
-                    {/* ✅ EMPTY STATE */}
-                    {products.length === 0 && (
-                        <p style={{ textAlign: "center" }}>No results found</p>
+                    {products.length === 0 && query && (
+                        <p style={{ textAlign: "center", marginTop: "40px", fontSize: "16px", color: "#4a4a4a" }}>No products found</p>
                     )}
 
-                    <div className="product_wrap">
-                        {products.map(product => (
-                            <div className="searchresult_wrap product_card" key={product.id}>
+                    {products.length > 0 && (
+                        <div className="product_wrap">
+                            {products.map(product => (
+                                <div className="product_card" key={product.id}>
 
-                                <div className="product_image">
-                                    <img
-                                        src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
-                                        alt={product.name}
-                                    />
+                                    <div className="product_image">
+                                        <img
+                                            src={`https://ecomm-backend-1-9fod.onrender.com/products/${product.image}`}
+                                            alt={product.name}
+                                        />
+                                    </div>
+
+                                    <div className="product_title">
+                                        <h3>{product.name}</h3>
+                                    </div>
+
+                                    <div className="product_price">
+                                        <h4>${product.price}</h4>
+                                    </div>
+
+                                    <div className="product_desc">
+                                        <p>{product.description}</p>
+                                    </div>
+
                                 </div>
-
-                                <div className="product_title">
-                                    <h3>{product.name}</h3>
-                                </div>
-
-                                <div className="product_price">
-                                    <h4>{product.price}</h4>
-                                </div>
-
-                                <div className="product_desc">
-                                    <p>{product.description}</p>
-                                </div>
-
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
 
                 </div>
             </section>
-
         </div>
     );
-}
+};
 
 export default Search;

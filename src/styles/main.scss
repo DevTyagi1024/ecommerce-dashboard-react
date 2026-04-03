@@ -1,3 +1,4 @@
+@use './reset';
 @use './variables';
 @use './mixins';
 
@@ -5,3 +6,4 @@
 @use './add_product.scss';
 @use './product_list.scss';
 @use './search.scss';
+@use './footer.scss';

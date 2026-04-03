@@ -1,25 +1,31 @@
+@use './variables' as *;
+@use './mixins' as *;
+
 .search {
-    padding: 100px 0;
+    padding: $spacing-3xl 0;
+    background: $gradient-light;
+    min-height: calc(100vh - 100px);
 
     &_head {
         max-width: 600px;
         width: 100%;
-        margin: 0px auto;
+        margin: 0px auto $spacing-xl;
+        text-align: center;
 
         h2 {
             margin: 0;
-            text-align: center;
+            font-size: $fs-3xl;
+            color: $color-primary;
+            font-weight: $fw-bold;
         }
     }
 
     &_wrap {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+        @include flex-column;
+        gap: $spacing-lg;
         max-width: 600px;
         width: 100%;
-        margin: 0px auto;
-        padding-top: 30px;
+        margin: 0px auto $spacing-2xl;
     }
 
     &_input {
@@ -27,32 +33,25 @@
         width: 100%;
 
         input {
-            width: 100%;
-            border-radius: 24px;
-            padding: 12px 24px;
-            border: 1px solid #000;
-            background-color: #fff;
+            @include input-primary;
 
-            &:focus {
-                outline: none;
+            &::placeholder {
+                color: $color-text-muted;
             }
-
         }
     }
 
     &_button {
+        @include flex-center;
+
         button {
-            padding: 12px 24px;
-            background-color: #000;
-            color: #fff;
-            max-width: fit-content;
-            display: flex;
-            justify-content: center;
-            border-radius: 100px;
-            border: 1px solid transparent;
-            margin: 0px auto;
-            transition: 0.3s ease-in-out;
-            font-weight: 600;
+            @include button-primary;
+            width: 100%;
+            border: none;
+
+            &:active {
+                transform: translateY(0);
+            }
         }
     }
 }

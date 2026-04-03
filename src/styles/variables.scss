@@ -1,0 +1,59 @@
+// Color Palette - Custom Colors
+$color-primary: #000000;        // Black
+$color-secondary: #a0aecd;      // Light Blue-Grey
+$color-accent: #7a8ab3;         // Medium Blue-Grey
+$color-light: #c4cfe0;          // Lighter Blue-Grey
+$color-white: #ffffff;
+$color-light-bg: #f8f9fb;       // Almost white with blue tint
+$color-light-border: #d4dce8;   // Light border
+
+$color-text-dark: #000000;
+$color-text-light: #ffffff;
+$color-text-muted: #666666;
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+$gradient-secondary: linear-gradient(135deg, #a0aecd 0%, #7a8ab3 100%);
+$gradient-accent: linear-gradient(135deg, #7a8ab3 0%, #a0aecd 100%);
+$gradient-light: linear-gradient(135deg, #f8f9fb 0%, #eef1f8 100%);
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 40px;
+$spacing-3xl: 64px;
+
+// Border Radius
+$br-sm: 8px;
+$br-md: 12px;
+$br-lg: 16px;
+$br-xl: 24px;
+$br-full: 100px;
+
+// Font Sizes
+$fs-xs: 12px;
+$fs-sm: 14px;
+$fs-md: 16px;
+$fs-lg: 20px;
+$fs-xl: 24px;
+$fs-2xl: 32px;
+$fs-3xl: 40px;
+
+// Font Weights
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+// Transitions
+$transition: 0.3s ease-in-out;
+$transition-fast: 0.15s ease-in-out;
+$transition-slow: 0.5s ease-in-out;
+
+// Box Shadows
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);

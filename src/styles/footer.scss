@@ -17,7 +17,7 @@
     &-content {
         @include flex-between;
         padding: $spacing-3xl 0 $spacing-xl 0;
-        gap: $spacing-2xl;
+        gap: 150px;
         flex-wrap: wrap;
         align-items: flex-start;
 
@@ -135,7 +135,7 @@
 
         .social-icons {
             @include flex-center;
-            gap: $spacing-md;
+            gap: 20px;
             justify-content: flex-start;
             flex-wrap: wrap;
 

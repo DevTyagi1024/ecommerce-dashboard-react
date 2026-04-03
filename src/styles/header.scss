@@ -19,10 +19,14 @@
         width: 100%;
 
         &-nav {
-            display: flex !important;
+            display: flex;
             align-items: center;
             gap: 50px;
             justify-content: flex-end;
+
+            @media(max-width: 1024px) {
+                display: none;
+            }
 
             .navbar-collapse {
                 display: flex !important;
@@ -151,6 +155,10 @@
         flex-shrink: 0;
         margin-right: $spacing-xl;
 
+        a.brand {
+            padding: 0 !important;
+        }
+
         .logo {
             max-width: 150px;
             width: 100%;
@@ -158,6 +166,11 @@
             border-radius: $br-lg;
             transition: transform $transition;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+            @media(max-width: 1024px) {
+                max-width: 50px;
+                height: 50px;
+            }
 
             &:hover {
                 transform: scale(1.05);
@@ -188,6 +201,12 @@
         gap: $spacing-2xl;
         align-items: center;
 
+        @media(max-width:1024px) {
+            justify-content: space-between;
+            flex-direction: row-reverse;
+            min-height: unset;
+        }
+
         a {
             color: $color-text-light;
             font-size: $fs-lg;
@@ -216,7 +235,6 @@
 
             &:hover {
                 color: $color-secondary;
-                background: rgba($color-secondary, 0.1);
                 transform: translateY(-1px);
 
                 &::after {
@@ -250,3 +268,21 @@
         }
     }
 }
+
+
+// @media(max-width:1024px) {
+//     .header {
+//         .navbar-collapse.show {
+//             .navbar-nav {
+//                 display: flex;
+//                 position: absolute;
+//                 top: 0;
+//                 background: #fff;
+//                 left: 0;
+//                 height: 100vh;
+//                 width: 100%;
+//                 max-height: unset!important;
+//             }
+//         }
+//     }
+// }

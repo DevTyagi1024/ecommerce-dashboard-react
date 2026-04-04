@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import './App.css'
 import { Button } from 'react-bootstrap'
 import Header from './Header'
@@ -12,15 +12,22 @@ import Protected from './Protected'
 import ProductList from './ProductList'
 import UserList from './UserList'
 import Search from './Search'
+import { LoadingProvider, LoadingContext } from './contexts/LoadingContext'
+import { Loader } from './components/Loader'
+import { setLoadingCallback } from './services/api'
 
+function AppContent() {
+  const { setIsLoading } = useContext(LoadingContext);
 
-function App() {
+  useEffect(() => {
+    // Set the callback for axios interceptors
+    setLoadingCallback(setIsLoading);
+  }, [setIsLoading]);
 
   return (
     <div className="app-container">
       <BrowserRouter>
       
-
         <main className="main-content">
           <Routes>
             <Route path='/' element={<Register />} />
@@ -37,6 +44,15 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <LoadingProvider>
+      <Loader />
+      <AppContent />
+    </LoadingProvider>
   )
 }
 

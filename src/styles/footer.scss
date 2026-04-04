@@ -21,7 +21,7 @@
         flex-wrap: wrap;
         align-items: flex-start;
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             flex-direction: column;
             gap: $spacing-xl;
             text-align: center;
@@ -32,6 +32,12 @@
     &-brand {
         flex: 1;
         min-width: 250px;
+
+        @media(max-width:1024px){
+            min-width: unset;
+            max-width: 100%;
+            width: 100%;
+        }
 
         .footer-logo {
             max-width: 80px;
@@ -59,6 +65,10 @@
             font-size: $fs-sm;
             line-height: 1.6;
             margin: 0;
+
+            @media(max-width: 1024px) {
+                text-align: left;
+            }
         }
     }
 
@@ -66,12 +76,22 @@
         flex: 1;
         min-width: 200px;
 
+        @media(max-width:1024px){
+            min-width: unset;
+            max-width: 100%;
+            width: 100%;
+        }
+
         .footer-heading {
             color: $color-secondary;
             font-size: $fs-lg;
             font-weight: $fw-semibold;
             margin-bottom: $spacing-lg;
             position: relative;
+
+            @media (max-width: 1024px) {
+                text-align: left;
+            }
 
             &::after {
                 content: '';
@@ -92,6 +112,10 @@
 
             li {
                 margin-bottom: $spacing-sm;
+
+                @media(max-width:1024px) {
+                    text-align: left;
+                }
 
                 a {
                     color: rgba($color-text-light, 0.8);
@@ -114,12 +138,22 @@
         flex: 1;
         min-width: 200px;
 
+        @media(max-width:1024px){
+            min-width: unset;
+            max-width: 100%;
+            width: 100%;
+        }
+
         .footer-heading {
             color: $color-secondary;
             font-size: $fs-lg;
             font-weight: $fw-semibold;
             margin-bottom: $spacing-lg;
             position: relative;
+
+            @media(max-width:1024px) {
+                text-align: left;
+            }
 
             &::after {
                 content: '';
@@ -182,7 +216,6 @@
         border-top: 1px solid rgba($color-text-light, 0.1);
         padding: $spacing-lg 0;
         text-align: center;
-        background: rgba(0, 0, 0, 0.2);
     }
 
     &-copyright {

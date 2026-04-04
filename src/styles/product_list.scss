@@ -18,8 +18,8 @@
     }
 
     &_wrap {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: $spacing-lg;
         padding-top: $spacing-xl;
     }
@@ -28,8 +28,18 @@
         @include card;
         display: flex;
         flex-direction: column;
+        max-width: calc((100% - 48px) /3);
+        width: 100%;
         gap: $spacing-md;
         background: $color-white;
+
+        @media(max-width:1024px) {
+            max-width: calc((100% - 24px) /2);
+        }
+
+        @media(max-width:768px) {
+            max-width: 100%;
+        }
     }
 
     &_image {

@@ -15,6 +15,7 @@ import { LoadingProvider, LoadingContext } from './contexts/LoadingContext'
 import { Loader } from './components/Loader'
 import { setLoadingCallback } from './services/api'
 
+
 function AppContent() {
   const { setIsLoading } = useContext(LoadingContext);
 

@@ -12,7 +12,7 @@ import ProductList from './ProductList'
 import UserList from './UserList'
 import Search from './Search'
 import { LoadingProvider, LoadingContext } from './contexts/LoadingContext'
-import { Loader } from './components/Loader'
+import { Loader } from './components/Loader.jsx'
 import { setLoadingCallback } from './services/api'
 
 function AppContent() {

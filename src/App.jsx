@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import './App.css'
-import { Button } from 'react-bootstrap'
 import Header from './Header'
 import Footer from './footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'

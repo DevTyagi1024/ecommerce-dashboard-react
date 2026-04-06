@@ -26,12 +26,21 @@
 
             @media(max-width: 1024px) {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;   
+                max-height: unset!important; 
+                width: 100%;   
+                background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+                border: 1px solid rgba($color-secondary, 0.3);
+                padding: $spacing-lg;
             }
 
             .navbar-collapse {
                 display: flex !important;
                 align-items: center;
                 width: 100%;
+               
             }
 
             .navbar-toggler {
@@ -135,6 +144,7 @@
         width: 100%;
         align-items: center;
         flex: 1;
+         height: 100%!important;
     }
 
     .navbar-toggler {
@@ -253,8 +263,6 @@
     }
 }
 
-
-
 .logout-icon {
     font-size: $fs-md;
     display: inline-block;
@@ -265,6 +273,17 @@
 
         &::after {
             width: 100%;
+        }
+    }
+}
+
+
+@media(max-width:1024px) {
+    .header {
+        .navbar-collapse.collapse.show {
+            .navbar-nav {
+                display: flex;
+            }
         }
     }
 }

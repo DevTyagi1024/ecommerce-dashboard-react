@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
 import api from "./services/api";
-import Banner from "./components/banner";
+import Banner from "./components/Banner";
 
 const AddProduct = function () {
 

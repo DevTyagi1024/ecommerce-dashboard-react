@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import api from "./services/api";
-import Banner from "./components/banner";
+import Banner from "./components/Banner";
 
 const UserList = function () {
 

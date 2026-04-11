@@ -1,6 +1,5 @@
-import Banner from './components/banner';
+import Banner from './components/Banner';
 import Header from './Header';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (

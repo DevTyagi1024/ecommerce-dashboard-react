@@ -12,7 +12,7 @@ import ProductList from './ProductList'
 import UserList from './UserList'
 import Search from './Search'
 import { LoadingProvider, LoadingContext } from './contexts/LoadingContext'
-import { Loader } from './Components/Loader'
+import { Loader } from './components/Loader'
 import { setLoadingCallback } from './services/api'
 import Home from './Home'
 

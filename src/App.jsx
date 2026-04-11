@@ -14,6 +14,7 @@ import Search from './Search'
 import { LoadingProvider, LoadingContext } from './contexts/LoadingContext'
 import { Loader } from './Components/Loader'
 import { setLoadingCallback } from './services/api'
+import Home from './Home'
 
 function AppContent() {
   const { setIsLoading } = useContext(LoadingContext);
@@ -29,7 +30,7 @@ function AppContent() {
       
         <main className="main-content">
           <Routes>
-            <Route path='/' element={<Register />} />
+            <Route path='/' element={<Home />} />
             <Route path='/Login' element={<Login />} />
             <Route path='/Search' element={<Protected Component={Search} />} />
             <Route path='/productlist' element={<Protected Component={ProductList} />} />

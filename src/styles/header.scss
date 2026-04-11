@@ -59,9 +59,9 @@
             .nav-item {
                 .nav-link.dropdown-toggle {
                     color: $color-text-light !important;
-                    font-size: $fs-lg;
+                    font-size: $fs-md;
                     font-weight: $fw-medium;
-                    padding: 8px 16px !important;
+                    padding: 8px 20px !important;
                     border-radius: $br-md;
                     transition: all $transition;
                     white-space: nowrap;
@@ -72,6 +72,10 @@
                     letter-spacing: 0.5px;
                     background: rgba($color-text-light, 0.05);
                     border: 1px solid rgba($color-text-light, 0.1);
+
+                    &::after{
+                        display: none;
+                    }
 
                     &:hover {
                         color: $color-secondary !important;
@@ -95,7 +99,6 @@
                     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
                     border: 1px solid rgba($color-secondary, 0.3);
                     border-radius: $br-lg;
-                    min-width: 180px;
                     margin-top: 8px;
                     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
                     backdrop-filter: blur(10px);
@@ -103,11 +106,10 @@
                     .dropdown-item {
                         color: $color-text-light;
                         transition: all $transition;
-                        padding: 14px 20px;
                         font-weight: $fw-medium;
                         font-size: $fs-md;
+                        padding: 10px 20px;
                         border-radius: $br-md;
-                        margin: 2px 4px;
                         display: flex;
                         align-items: center;
                         gap: 10px;
@@ -121,17 +123,6 @@
 
                         &:active {
                             background: linear-gradient(135deg, rgba($color-secondary, 0.3) 0%, rgba($color-secondary, 0.15) 100%);
-                        }
-
-                        &.logout-item {
-                            border-top: 1px solid rgba($color-text-light, 0.1);
-                            margin-top: 8px;
-                            padding-top: 16px;
-
-                            &:hover {
-                                background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(220, 38, 38, 0.1) 100%);
-                                color: #ef4444;
-                            }
                         }
                     }
                 }
@@ -167,6 +158,10 @@
 
         a.brand {
             padding: 0 !important;
+
+            &::after{
+                display: none;
+            }
         }
 
         .logo {

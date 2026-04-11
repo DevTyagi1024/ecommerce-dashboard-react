@@ -10,7 +10,9 @@ const Footer = function () {
                 <div className="footer-content">
                     {/* Logo and Description */}
                     <div className="footer-brand">
-                        <img src="/Images/Logo.avif" alt="Dev Tyagi Logo" className="footer-logo" />
+                         <Link to="/" className="brand">
+                                <img src="/Images/Logo.avif" alt="Dev Tyagi Logo" className="footer-logo" />
+                            </Link>
                         <p className="footer-description">
                             Your trusted e-commerce dashboard for managing products and users efficiently.
                         </p>

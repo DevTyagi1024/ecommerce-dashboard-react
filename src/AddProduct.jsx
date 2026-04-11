@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useState } from "react";
 import api from "./services/api";
+import Banner from "./components/banner";
 
 const AddProduct = function () {
 
@@ -52,6 +53,15 @@ const AddProduct = function () {
     return (
         <div>
             <Header />
+
+            <Banner
+                title="Add New Product"
+                subtitle="Fill in the details to add a new product to your inventory."
+                ctaText="View Product List"
+                ctaLink="/productlist"
+            />
+
+
             <div className="auth-container">
                 <div className="product_form">
                     <h1 className="product_form_title">Add New Product</h1>

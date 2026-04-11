@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import api from "./services/api";
+import Banner from "./components/banner";
 
 const UserList = function () {
 
@@ -37,6 +38,14 @@ const UserList = function () {
     return (
         <div>
             <Header />
+
+            <Banner
+                title="User Management"
+                subtitle="View and manage all users in the system."
+                ctaText="Add New User"
+                ctaLink="/"
+            />
+
             <div className="user-list-container">
                 <h2>Users List</h2>
 

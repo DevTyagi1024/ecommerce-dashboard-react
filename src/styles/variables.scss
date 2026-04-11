@@ -1,11 +1,11 @@
 // Color Palette - Custom Colors
-$color-primary: #000000;        // Black
-$color-secondary: #a0aecd;      // Light Blue-Grey
-$color-accent: #7a8ab3;         // Medium Blue-Grey
-$color-light: #c4cfe0;          // Lighter Blue-Grey
+$color-primary: #000000; // Black
+$color-secondary: #a0aecd; // Light Blue-Grey
+$color-accent: #7a8ab3; // Medium Blue-Grey
+$color-light: #c4cfe0; // Lighter Blue-Grey
 $color-white: #ffffff;
-$color-light-bg: #f8f9fb;       // Almost white with blue tint
-$color-light-border: #d4dce8;   // Light border
+$color-light-bg: #f8f9fb; // Almost white with blue tint
+$color-light-border: #d4dce8; // Light border
 
 $color-text-dark: #000000;
 $color-text-light: #ffffff;
@@ -41,6 +41,42 @@ $fs-lg: 20px;
 $fs-xl: 24px;
 $fs-2xl: 32px;
 $fs-3xl: 40px;
+$fs-4xl: 50px;
+
+
+// Line heights
+
+$lh-14: 14px;
+$lh-16: 16px;
+$lh-18: 18px;
+$lh-20: 20px;
+$lh-22: 22px;
+$lh-24: 24px;
+$lh-26: 26px;
+$lh-28: 28px;
+$lh-30: 30px;
+$lh-32: 32px;
+$lh-34: 34px;
+$lh-36: 36px;
+$lh-38: 38px;
+$lh-40: 40px;
+$lh-42: 42px;
+$lh-44: 44px;
+$lh-46: 46px;
+$lh-48: 48px;
+$lh-50: 50px;
+$lh-52: 52px;
+$lh-54: 54px;
+$lh-56: 56px;
+$lh-58: 58px;
+$lh-60: 60px;
+$lh-62: 62px;
+$lh-64: 64px;
+$lh-66: 66px;
+$lh-68: 68px;
+$lh-70: 70px;
+$lh-normal: normal;
+
 
 // Font Weights
 $fw-regular: 400;
@@ -57,3 +93,58 @@ $transition-slow: 0.5s ease-in-out;
 $shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
 $shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $br-md;
+    font-size: $fs-md;
+    line-height: $lh-24;
+    font-weight: $fw-semibold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// 🔵 Primary Button
+.button--primary {
+    background: $gradient-primary;
+    color: $color-text-light;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-md;
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: $shadow-sm;
+    }
+}
+
+// ⚪ Secondary Button
+.button--secondary {
+    background: transparent;
+    color: $color-primary;
+    border: 2px solid $color-light-border;
+
+    &:hover {
+        background: $color-light-bg;
+        border-color: $color-accent;
+        color: $color-accent;
+    }
+
+    &:active {
+        background: $color-light;
+    }
+}

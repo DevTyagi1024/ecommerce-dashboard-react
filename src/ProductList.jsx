@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import api from "./services/api";
+import Banner from "./components/banner";
 
 const ProductList = function () {
 
@@ -27,6 +28,13 @@ const ProductList = function () {
     return (
         <div>
             <Header />
+
+            <Banner
+                title="Here is the Product Listing"
+                subtitle="Manage your products with ease and simply found the list here."
+                ctaText="Add New Product"
+                ctaLink="/AddProduct"
+            />
 
             <section className="product">
                 <div className="container">
